@@ -5,7 +5,7 @@ from typing import Any
 from django.http import StreamingHttpResponse
 from django.views import View
 
-__version__ = "0.2.0"
+__version__ = "1.0.0"
 
 
 @dataclass
@@ -53,9 +53,6 @@ class SseStreamView(View):
       content_type=self.SSE_CONTENT_TYPE,
       headers=self.SSE_HEADERS
     )
-
-  def prepare_data(self, data):
-    return data
 
   async def _stream(self, request, *args, **kwargs):
     async for event in self.stream(request, *args, **kwargs):
